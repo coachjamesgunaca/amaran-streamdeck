@@ -1,0 +1,5 @@
+node_modules/
+bin/plugin.js
+bin/plugin.js.map
+*.log
+logs/

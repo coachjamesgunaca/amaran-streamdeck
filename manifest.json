@@ -1,0 +1,96 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "Name": "Amaran Lights",
+  "Version": "1.0.0.0",
+  "Author": "James Gunaca",
+  "Description": "Control amaran lights through Homebridge (homebridge-amaran-lights) over its local HTTP API. No amaran Desktop app required.",
+  "Category": "Amaran Lights",
+  "CategoryIcon": "imgs/plugin/category",
+  "Icon": "imgs/plugin/category",
+  "URL": "https://github.com/coachjamesgunaca/homebridge-amaran-lights",
+  "SDKVersion": 2,
+  "CodePath": "bin/plugin.js",
+  "Nodejs": {
+    "Version": "20",
+    "Debug": "enabled"
+  },
+  "Software": {
+    "MinimumVersion": "6.5"
+  },
+  "OS": [
+    { "Platform": "mac", "MinimumVersion": "12" },
+    { "Platform": "windows", "MinimumVersion": "10" }
+  ],
+  "UUID": "com.coachjamesgunaca.amaran-openapi",
+  "Actions": [
+    {
+      "UUID": "com.coachjamesgunaca.amaran-openapi.toggle",
+      "Name": "Toggle / On / Off",
+      "Tooltip": "Toggle an amaran light on/off (or force on/off).",
+      "Icon": "imgs/actions/panel-off",
+      "Controllers": ["Keypad"],
+      "PropertyInspectorPath": "ui/inspector.html",
+      "States": [
+        { "Image": "imgs/actions/panel-off", "TitleAlignment": "bottom" }
+      ]
+    },
+    {
+      "UUID": "com.coachjamesgunaca.amaran-openapi.brightness-step",
+      "Name": "Brightness Step",
+      "Tooltip": "Step brightness up or down by a fixed amount (use a negative step for down).",
+      "Icon": "imgs/actions/brightness",
+      "Controllers": ["Keypad"],
+      "PropertyInspectorPath": "ui/inspector.html",
+      "States": [
+        { "Image": "imgs/actions/brightness", "TitleAlignment": "bottom" }
+      ]
+    },
+    {
+      "UUID": "com.coachjamesgunaca.amaran-openapi.color",
+      "Name": "Color",
+      "Tooltip": "Set a colour (hue/saturation) on colour-capable amaran lights such as the Ray 120c.",
+      "Icon": "imgs/actions/color",
+      "Controllers": ["Keypad"],
+      "PropertyInspectorPath": "ui/inspector.html",
+      "States": [
+        { "Image": "imgs/actions/color", "TitleAlignment": "bottom" }
+      ]
+    },
+    {
+      "UUID": "com.coachjamesgunaca.amaran-openapi.brightness-dial",
+      "Name": "Brightness Dial",
+      "Tooltip": "Rotate to adjust brightness; press to toggle.",
+      "Icon": "imgs/actions/brightness",
+      "Controllers": ["Encoder"],
+      "PropertyInspectorPath": "ui/inspector.html",
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Adjust brightness",
+          "Push": "Toggle on/off"
+        }
+      },
+      "States": [
+        { "Image": "imgs/actions/brightness" }
+      ]
+    },
+    {
+      "UUID": "com.coachjamesgunaca.amaran-openapi.cct-dial",
+      "Name": "Color Temp Dial",
+      "Tooltip": "Rotate to adjust color temperature; press to toggle.",
+      "Icon": "imgs/actions/temperature",
+      "Controllers": ["Encoder"],
+      "PropertyInspectorPath": "ui/inspector.html",
+      "Encoder": {
+        "layout": "$B2",
+        "TriggerDescription": {
+          "Rotate": "Adjust color temperature",
+          "Push": "Toggle on/off"
+        }
+      },
+      "States": [
+        { "Image": "imgs/actions/temperature" }
+      ]
+    }
+  ]
+}
