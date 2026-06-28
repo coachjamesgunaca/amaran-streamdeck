@@ -24,8 +24,12 @@ export interface ConnectionSettings {
   token?: string;
 }
 
-/** Default base URL of the amaran BLE daemon (matches the Homebridge schema placeholder). */
-export const DEFAULT_BASE_URL = "http://127.0.0.1:2708";
+/**
+ * Default base URL. Points at the homebridge-amaran-lights HTTP control server
+ * (port 2709), NOT the amaran daemon (2708): going through Homebridge keeps
+ * HomeKit in sync. Set Server to the daemon (2708) only if you don't want sync.
+ */
+export const DEFAULT_BASE_URL = "http://127.0.0.1:2709";
 
 export function baseUrlOf(settings: ConnectionSettings): string {
   const url = (settings.baseUrl ?? "").trim();

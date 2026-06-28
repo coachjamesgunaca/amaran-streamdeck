@@ -87,13 +87,13 @@
 
     <div class="row">
       <label for="baseUrl">Server</label>
-      <div class="control"><input id="baseUrl" type="text" placeholder="http://127.0.0.1:2708" /></div>
+      <div class="control"><input id="baseUrl" type="text" placeholder="http://127.0.0.1:2709" /></div>
     </div>
     <div class="row">
       <label for="token">Token</label>
       <div class="control"><input id="token" type="text" placeholder="(optional)" /></div>
     </div>
-    <div class="hint">Server &amp; token must match your amaran daemon's <code>http</code> config.</div>
+    <div class="hint">Point Server at the Homebridge control server (<code>:2709</code>) for HomeKit sync, or the daemon (<code>:2708</code>) for direct control.</div>
 
     <script>
       let websocket = null;
@@ -101,7 +101,7 @@
       let actionUUID = null;
       let settings = {};
 
-      const DEFAULT_BASE_URL = "http://127.0.0.1:2708";
+      const DEFAULT_BASE_URL = "http://127.0.0.1:2709";
       const $ = (id) => document.getElementById(id);
 
       function setStatus(msg, ok) {

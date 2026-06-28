@@ -2,11 +2,16 @@
 
 A Stream Deck plugin to control amaran lights — **without the amaran Desktop app running** — by talking to your local **amaran BLE daemon** (the same npm package that [`homebridge-amaran-lights`](https://github.com/coachjamesgunaca/homebridge-amaran-lights) drives through its `http` transport).
 
-This is the successor to the original OpenAPI build. Instead of speaking the amaran Desktop OpenAPI (AES-token WebSocket) directly, the plugin now sends simple HTTP commands to the daemon, which owns the connection to the lights.
+This is the successor to the original OpenAPI build. Instead of speaking the amaran Desktop OpenAPI (AES-token WebSocket) directly, the plugin now sends simple HTTP commands.
+
+By default it points at the **homebridge-amaran-lights HTTP control server** (port `2709`), which forwards to the daemon *and* keeps HomeKit in sync — the way the Neewer setup behaves:
 
 ```
-Stream Deck  ──HTTP──►  amaran BLE daemon  ──►  amaran light
+Stream Deck ──HTTP──► homebridge-amaran-lights (:2709) ──► amaran daemon (:2708) ──► light
+                              └── updates HomeKit
 ```
+
+You can instead point the **Server** field straight at the daemon (`http://127.0.0.1:2708`) for direct control, but then changes won't show in HomeKit. The control server is part of homebridge-amaran-lights (enable `http` in its config).
 
 ## How amaran control differs from the Neewer plugin
 
